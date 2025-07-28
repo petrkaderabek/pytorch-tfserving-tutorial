@@ -1,6 +1,6 @@
 # PyTorch-RaggedTensor-TFServing Tutorial
 
-Tensorflow Serving is used to provide an API providing priorities of a particular set of offers for a particular customer in real time. The priorities come from a PyTorch model, which consumes customer ID and returns vector of priorities of all available offers. This model has to be convertes to Tensorflow SavedModel format for TF Serving to be able to use it. Additionally, TF Ragged Tensors are used: The API is queried for a particular set of offers but the PyTorch model returns all offers.
+Tensorflow Serving is used to provide an API providing priorities of a particular set of offers for a particular customer in real time. The priorities come from a PyTorch model, which consumes customer indices and returns vector of priorities of all available offers. This model has to be converted to Tensorflow SavedModel format for TF Serving to be able to use it. Additionally, Tensorflow suports a lookup table, which is used to have Customer IDs rather than indices as an input. 
 
 ## Model
 
