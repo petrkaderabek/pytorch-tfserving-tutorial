@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  tensorflow-serving:
+    image: tensorflow/serving
+    ports:
+      - "8501:8501"       # REST API
+      - "8500:8500"       # gRPC API
+    volumes:
+      - ./models:/models:ro
+      # Monitoring config mount (optional, for Prometheus endpoint; see notes below)
+      - ./serving_config/monitoring.config:/monitoring.config:ro
+    command: >
+      tensorflow_model_server
+      --model_config_file=/models/models.config
+      --monitoring_config_file=/monitoring.config
+      --monitoring_config_file_poll_wait_seconds=60
+      --allow_version_labels
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+    restart: unless-stopped
+
+volumes:
+  prometheus-data:

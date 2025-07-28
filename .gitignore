@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Poetry virtual environments (if not using .venv in project root)
+.env/
+.venv/
+# Poetry cache
+.cache/
+# Pyright, mypy, and other Python type checkers
+.mypy_cache/
+.pyright/
+.pyre/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# VS Code settings
+.vscode/
+
+# MacOS and Linux system files
+.DS_Store
+Thumbs.db
+
+# Python virtual environment folders (sometimes outside project root)
+env/
+venv/
+
+# Model artifacts and large data
+saved_models/
+*.h5
+*.hdf5
+*.pb
+*.ckpt
+*.tflite
+
+# TensorBoard logs
+logs/
+events.out.tfevents.*
+
+# Docker
+docker/*.log
+docker/*.pid
+
+# Performance test outputs
+perf_tests/results/
+perf_tests/*.log
+
+# Ignore local configuration files
+*.local
+*.env
+.envrc
+
+# Ignore test coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Ignore pip wheel cache
+pip-wheel-metadata/
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore notebook output files (optional, if you export)
+*.nbconvert.ipynb
